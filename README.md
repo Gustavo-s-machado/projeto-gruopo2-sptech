@@ -1,1 +1,1 @@
-# projeto-gruopo2-sptech
+# projeto-grupo2-sptech
