@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Financeira</title>
+</head>
+
+<body>
+    <!DOCTYPE html>
+    <html lang="pt-br">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Calculadora Financeira</title>
+
+    </head>
+
+    <body>
+
+        <p>
+        <h1> Bem vindo! Calculadora Financeira </h1>
+        </p>
+
+        Quantas vezes o seu campo foi alagado por causa de altas chuvas? <input id="input_partidaAnulada"><br>
+        Quantas vezes teve atraso nas partidas por causa do alagamento? <input id="input_vezesAtrasoPartida"><br>
+        Qual a media(em minutos) de atraso nas partidas quando estava alagado? <input id="input_mAtrasoPartida"><br>
+        Quanto é a média de custo por partida? <input id="input_mediaPartida"><br>
+        Quantas vezes você teve que reformar e substituir o gramado? <input id="input_reformaGramado"><br>
+        Qual foi a média de custo das reformas que você fez no estadio? <input id="input_precoReforma"><br>
+        <button onclick="CalcularGasto()">Calcular Gasto Total</button>
+        <p id="p_gasto_atraso"></p>
+
+        
+
+
+    </body>
+
+    </html>
+
+    <script>
+        function CalcularGasto() {
+            var vzAlagado = Number(input_partidaAnulada.value);
+            var vzatrasop = Number(input_vezesAtrasoPartida.value);
+            var meatrasopart = Number(input_mAtrasoPartida.value);
+            var mediaPartida = Number(input_mediaPartida.value);
+            var regramado = Number(input_reformaGramado.value);
+            var prereforma = Number(input_precoReforma.value);
+//multa por minuto atrasado (quanto deixa de ganhar)
+
+            var totalAtraso = (meatrasopart * vzatrasop);
+            var custoAtraso = (totalAtraso * mediaPartida); // CUSTO DO ATRASO DAS PARTIDAS É = 
+            var totalReforma = (regramado * prereforma);
+            var prejuTotal = (custoAtraso + totalReforma);
+
+            if (vzAtrasop > 0) {
+                p_gasto_atraso.innerHTML = `Com ${vzAtrasop} atrasos em partidas, você teve no total ${totalAtraso} minutos de atraso. Com isso o prejuizo final foi de <b style= "color: red;">R$${custoAtraso}!</b>`
+            }
+
+
+            if (regramado > 0) {
+
+                p_gasto_atraso.innerHTML += `<br> Com as ${regramado} reforma ou Substituição do gramado, você teve que gastar no total <b style="color: red;">R$${totalReforma}</b>`
+
+            }
+
+
+            if (regramado <= 0) {
+                p_gasto_atraso.innerHTML += `<br> Você não precisou fazer reformas no seu estadio, que bom!`
+            }
+
+
+
+            if (prejuTotal > precoProjeto) {
+                p_gasto_atraso.innerHTML += `<br> No total de tudo você teve um prejuizo de <b style="color: red;">R$${prejuTotal}</b>, com atrasos e reformas.<br> Contratado a nossa empresa, você teria gastado $<b style="color: green;">${porcReducao}%</b> a menos do prejuizo total que teve.`
+            }
+
+
+            if (prejuTotal <= precoProjeto) {
+                p_gasto_atraso.innerHTML += `<br> No total de tudo você teve um prejuizo de <b style="color: red;">$${prejuTotal}</b>, com atrasos e reformas.<br> Nos contratando você pode evitar ter mais prejuizos no futuro, evitando gastos desnecessário.`
+            }
+
+
+        }
+    </script>
