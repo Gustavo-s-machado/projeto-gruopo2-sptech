@@ -50,6 +50,7 @@
             border: none;
 
             padding: 10px 20px;
+            cursor: pointer;
         }
 
         /* RESULTADO */
@@ -100,7 +101,7 @@
            </div>
 
            <div class="questao">
-                Quanto custou cada minuto de atraso na partida? <br>
+                Quanto custou em média cada partida? <br>
                     <input id="input_custoPartida"><br>
            </div>
 
@@ -156,7 +157,7 @@
         var custoTotalReforma = custoReformas * qtdReformas;
 
         // prejuízo total
-        var prejuizoTotal = custoTotalCancelamento + custoTotalAtrasoPartida + custoTotalReforma;
+        var prejuizoTotal = custoTotalCancelamento + custoTotalAtraso + custoTotalReforma;
 
 
         // Resultado de multas por cancelamento
