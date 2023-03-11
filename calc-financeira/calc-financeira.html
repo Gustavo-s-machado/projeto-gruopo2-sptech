@@ -61,7 +61,7 @@
             font-family: k2d, monospace;
         }
 
-        .cor_nome_empresa {
+        .corEmpresa {
             color: rgb(28, 134, 28);
         }
     </style>
@@ -71,7 +71,7 @@
 
     <div class="calc-wrapper">
         <div class="calc">
-            <h1>Calculadora Financeira <b class="cor_nome_empresa">Field´n Cloud</b></h1>
+            <h1>Calculadora Financeira <b class="corEmpresa">Field´n Cloud</b></h1>
             <p class="calc-texto">    
                 As fortes chuvas além de prejudicar o gramado, tendo que reformar e substituir, também causam multas pelos contratos com emissoras.<br>
                 Por esses problemas criamos a empresa <b>Field´n Cloud</b>, que visa resolver esses tipos de problemas.<br>
@@ -149,26 +149,26 @@
 
         // custo atraso partida
         var totalAtrasoMin = mediaAtrasoMin * qtdAtrasosPartida; // calcula o total de minutos atrasado
-        var custoTotalAtrasoPartida = custoPartida * totalAtrasoMin; // calcula o total perdido por atraso
+        var custoPorMinuto = custoPartida / 90; // calcula o preço por minuto por atraso
+        var custoTotalAtraso = custoPorMinuto * totalAtrasoMin;
 
         // Custo da reformas
         var custoTotalReforma = custoReformas * qtdReformas;
 
         // prejuízo total
-        var prejuizoTotal = custoTotalCancelamento + custoTotalAtrasoPartida + custoTotalReforma
+        var prejuizoTotal = custoTotalCancelamento + custoTotalAtrasoPartida + custoTotalReforma;
 
 
         // Resultado de multas por cancelamento
         p_resultado.innerHTML = `
             <h1> Análise de Gastos </h1>
-            Uma partida cancelada recebe uma multa em média de R$ 1,6 milhão. 
             <br>Com <b>${qtdPartidasCanceladas}</b> partidas canceladas, o estádio do(a) <b>${nomeEstadio}</b> recebeu multas em torno de R$<b style="color: red;">${custoTotalCancelamento}</b>.<br>
             
         `
         // Resultado dos atrasos em partidas
         p_resultado.innerHTML += `
-        <br> Cada minuto de atraso na partida custou em torno de R$<b>${custoPartida}</b>.
-            <br> Você atrasou <b>${qtdAtrasosPartida}</b> partidas, em média cada partida atrasou <b>${mediaAtrasoMin}</b> minutos, no geral você atrasou <b>${totalAtrasoMin}</b> minutos. Então você teve que pagar no total R$<b style="color: red;">${custoTotalAtrasoPartida}</b>.<br>
+        <br> Cada minuto de atraso na partida custou em torno de R$<b>${custoPorMinuto}</b>.
+            <br> Você atrasou <b>${qtdAtrasosPartida}</b> partidas, em média cada partida atrasou <b>${mediaAtrasoMin}</b> minutos, no geral você atrasou <b>${totalAtrasoMin}</b> minutos. Então você teve que pagar no total R$<b style="color: red;">${custoTotalAtraso}</b>.<br>
         
         `
         // Resultado da reforma no estádio
@@ -182,6 +182,10 @@
         <br>O estádio do(a) <b>${nomeEstadio}</b> Teve bastante prejuízo com cancelamentos, atrasos e reformas.
         <br> <b>No total, o(a) ${nomeEstadio} teve um prejuizo de R$<b style="color: red;">${prejuizoTotal}</b></b>
         `
+
+        p_resultado.innerHTML += `
+            <br><h2 class="corEmpresa">Todos esses prejuízos podem ser reduzidos e até zerados ao contratar nossa empresa!!</h2>
+        `;
 
 
 
