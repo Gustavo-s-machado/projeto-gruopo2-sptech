@@ -96,12 +96,12 @@
             </div>
         
            <div class="questao">
-                Qual a média(em minutos) de atraso nas partidas quando estava alagado? <br>
+                Qual a média (em minutos) de atraso nas partidas quando estava alagado? <br>
                     <input id="input_mediaAtrasoPartida"><br>
            </div>
 
            <div class="questao">
-                Quanto custou em média cada partida? <br>
+                Qual era o valor da transmissão do jogo? <br>
                     <input id="input_custoPartida"><br>
            </div>
 
@@ -142,16 +142,18 @@
         var qtdPartidasCanceladas = Number(input_qtdPartidasCanceladas.value) // total de partidas cancelada
         var qtdAtrasosPartida = Number(input_qtdAtrasosPartida.value) // total de partidas atrasada
         var mediaAtrasoMin = Number(input_mediaAtrasoPartida.value) // média total de atraso em minutos
-        var custoPartida = Number(input_custoPartida.value) // Custo de cada minuto de atraso
+        var custoPartida = Number(input_custoPartida.value) // Custo da partida cancelada
         var qtdReformas = Number(input_reformaEstadio.value) // vezes que teve que reformar o estadio
         var custoReformas = Number(input_custoReforma.value) // custo da reforma
 
+
+        // Custo das multas do cancelamento da partidas
         var custoTotalCancelamento = custoPartida * qtdPartidasCanceladas;
 
         // custo atraso partida
         var totalAtrasoMin = mediaAtrasoMin * qtdAtrasosPartida; // calcula o total de minutos atrasado
         var custoPorMinuto = custoPartida / 90; // calcula o preço por minuto por atraso
-        var custoTotalAtraso = custoPorMinuto * totalAtrasoMin;
+        var custoTotalAtraso = custoPorMinuto * totalAtrasoMin; // custo total do atraso da partida
 
         // Custo da reformas
         var custoTotalReforma = custoReformas * qtdReformas;
@@ -184,6 +186,8 @@
         <br> <b>No total, o(a) ${nomeEstadio} teve um prejuizo de R$<b style="color: red;">${prejuizoTotal}</b></b>
         `
 
+
+        // exibir que poderia ser evidado nos contratando
         p_resultado.innerHTML += `
             <br><h2 class="corEmpresa">Todos esses prejuízos podem ser reduzidos e até zerados ao contratar nossa empresa!!</h2>
         `;
